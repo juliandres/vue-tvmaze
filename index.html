@@ -10,7 +10,19 @@
 <body>
 
   <div id="app">
-    {{ message }}
+
+    <article v-for="(series, index) in seriesQuery" :key="index">
+
+      <h2>{{ series.show.name }}</h2>
+
+      <ul>
+        <li v-for="genre in series.show.genres">{{ genre }}</li>
+      </ul>
+
+      <img v-if="series.show.image" :src="series.show.image.medium" :alt="series.show.name">
+
+    </article>
+
   </div>
 
   <script src="node_modules/vue/dist/vue.js"></script>

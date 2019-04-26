@@ -5,8 +5,16 @@ const app  = new Vue({
   data () {
 
     return {
-      message: 'Hello there ;)'
+      seriesQuery: null
     }
+
+  },
+
+  mounted () {
+
+    axios
+      .get('http://api.tvmaze.com/search/shows?q=food')
+      .then(response => this.seriesQuery = response.data)
 
   }
 
