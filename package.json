@@ -1,0 +1,12 @@
+{
+  "name": "vue-tvmaze",
+  "version": "1.0.0",
+  "main": "index.html",
+  "author": "Julian Andrés <julian.acl@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6"
+  }
+}
