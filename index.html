@@ -11,7 +11,27 @@
 
   <div id="app">
 
+    <!-- Rota Inicial: Lista -->
     <article v-for="(series, index) in seriesQuery" :key="index">
+
+      <a href="">
+
+        <h2>{{ series.show.name }}</h2>
+
+        <ul>
+          <li v-for="genre in series.show.genres">{{ genre }}</li>
+        </ul>
+
+        <img v-if="series.show.image" :src="series.show.image.medium" :alt="series.show.name">
+
+      </a>
+
+    </article>
+
+    <!-- Rota de Detalhes -->
+    <article v-for="series in seriesQuery">
+
+      <img v-if="series.show.image" :src="series.show.image.medium" :alt="series.show.name">
 
       <h2>{{ series.show.name }}</h2>
 
@@ -19,7 +39,9 @@
         <li v-for="genre in series.show.genres">{{ genre }}</li>
       </ul>
 
-      <img v-if="series.show.image" :src="series.show.image.medium" :alt="series.show.name">
+      <div v-html="series.show.summary"></div>
+
+      <p>{{ series.show.premiered }}</p>
 
     </article>
 
