@@ -45,7 +45,6 @@ img {
 
 
 .series-card {
-  float: left;
   margin: 20px;
   max-width: 210px;
   overflow: hidden;
@@ -87,7 +86,7 @@ img {
 
 
 
-.series-card-genres {
+.series-genres {
   margin-bottom: 0;
   padding: 0;
   list-style: none;
@@ -95,10 +94,79 @@ img {
 
 
 
-.series-card-genres-item {
+.series-genres-label {
   display: inline;
 }
 
-.series-card-genres-item:not(:last-child)::after {
+
+
+.series-genres-item {
+  margin: 0;
+  display: inline;
+}
+
+.series-genres-item:not(:last-child)::after {
   content: ", ";
+}
+
+
+
+
+
+.series-details {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  color: #0f0f0f;
+  border-radius: 20px;
+}
+
+
+
+.series-details-poster {
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+
+
+.series-details-title {
+  font-size: 30px;
+}
+
+
+
+
+
+@media screen and (min-width: 600px) {
+
+
+
+  .series-details {
+    display: flex;
+    align-items: flex-start;
+  }
+
+
+
+  .series-details-poster {
+    margin-right: 20px;
+  }
+
+
+
+  .series-details-body {
+    flex: 1;
+  }
+
+
+
+  .series-details-title {
+    margin-top: 0;
+  }
+
+
+
 }

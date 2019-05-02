@@ -24,8 +24,8 @@ const Listing = {
 
             <h2 class="series-card-title">{{ item.show.name }}</h2>
 
-            <ul class="series-card-genres">
-              <li class="series-card-genres-item" v-for="genre in item.show.genres">{{ genre }}</li>
+            <ul class="series-genres">
+              <li class="series-genres-item" v-for="genre in item.show.genres">{{ genre }}</li>
             </ul>
 
           </header>
@@ -46,21 +46,26 @@ const Listing = {
 const Details = {
 
   template: `
-    <article>
+    <article class="series-details">
 
-      <img v-if="selectedSeries.show.image" :src="selectedSeries.show.image.medium" :alt="selectedSeries.show.name">
+      <img class="series-details-poster" :src="selectedSeries.show.image ? selectedSeries.show.image.medium : 'images/no-image.png'" :alt="selectedSeries.show.name">
 
-      <h2>{{ selectedSeries.show.name }}</h2>
+      <div class="series-details-body">
 
-      <ul>
-        <li v-for="genre in selectedSeries.show.genres">{{ genre }}</li>
-      </ul>
+        <h2 class="series-details-title">{{ selectedSeries.show.name }}</h2>
 
-      <div v-html="selectedSeries.show.summary"></div>
+        <dl v-if="selectedSeries.show.genres.length" class="series-genres">
+          <dt class="series-genres-label">Genres:</dt>
+          <dd class="series-genres-item" v-for="genre in selectedSeries.show.genres">{{ genre }}</dd>
+        </dl>
 
-      <p>{{ selectedSeries.show.premiered }}</p>
+        <div v-html="selectedSeries.show.summary"></div>
 
-      <router-link to="/">Go back</router-link>
+        <p>Premiered on: {{ selectedSeries.show.premiered }}</p>
+
+        <router-link to="/">Go back</router-link>
+
+      </div>
 
     </article>
   `,
