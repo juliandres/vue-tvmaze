@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+
+body {
+  padding: 20px;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  font-family: 'Cabin', sans-serif;
+  font-size: 18px;
+}
+
+
+
+
+
+a {
+  color: inherit;
+}
+
+
+
+
+
+img {
+  max-width: 100%;
+}
+
+
+
+
+
+.series-listing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+
+
+.series-card {
+  float: left;
+  margin: 20px;
+  max-width: 210px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  color: #0f0f0f;
+  border-radius: 20px;
+  transition: transform 0.2s;
+}
+
+.series-card:hover {
+  transform: scale(1.05);
+}
+
+
+
+.series-card-link {
+  text-decoration: none;
+}
+
+
+
+.series-card-poster {
+  display: block;
+}
+
+
+
+.series-card-header {
+  padding: 20px;
+}
+
+
+
+.series-card-title {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+
+.series-card-genres {
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+
+.series-card-genres-item {
+  display: inline;
+}
+
+.series-card-genres-item:not(:last-child)::after {
+  content: ", ";
+}

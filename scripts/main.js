@@ -12,19 +12,23 @@ const Listing = {
   computed: Vuex.mapState(['series']),
 
   template: `
-    <div>
+    <div class="series-listing">
 
-      <article v-for="item in series" :key="item.show.id">
+      <article class="series-card" v-for="item in series" :key="item.show.id">
 
-        <router-link :to="String(item.show.id)">
+        <router-link class="series-card-link" :to="String(item.show.id)">
 
-          <h2>{{ item.show.name }}</h2>
+          <img class="series-card-poster" :src="item.show.image ? item.show.image.medium : 'images/no-image.png'" :alt="item.show.name">
 
-          <ul>
-            <li v-for="genre in item.show.genres">{{ genre }}</li>
-          </ul>
+          <header class="series-card-header">
 
-          <img v-if="item.show.image" :src="item.show.image.medium" :alt="item.show.name">
+            <h2 class="series-card-title">{{ item.show.name }}</h2>
+
+            <ul class="series-card-genres">
+              <li class="series-card-genres-item" v-for="genre in item.show.genres">{{ genre }}</li>
+            </ul>
+
+          </header>
 
         </router-link>
 
