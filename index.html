@@ -11,43 +11,28 @@
 
   <div id="app">
 
-    <!-- Rota Inicial: Lista -->
-    <article v-for="(series, index) in seriesQuery" :key="index">
 
-      <a href="">
 
-        <h2>{{ series.show.name }}</h2>
+    <p v-if="errored">We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
 
-        <ul>
-          <li v-for="genre in series.show.genres">{{ genre }}</li>
-        </ul>
+    <div v-else>
 
-        <img v-if="series.show.image" :src="series.show.image.medium" :alt="series.show.name">
+      <p v-if="loading">Loading...</p>
 
-      </a>
+      <div v-else>
 
-    </article>
+        <router-view></router-view>
 
-    <!-- Rota de Detalhes -->
-    <article v-for="series in seriesQuery">
+      </div>
 
-      <img v-if="series.show.image" :src="series.show.image.medium" :alt="series.show.name">
+    </div>
 
-      <h2>{{ series.show.name }}</h2>
 
-      <ul>
-        <li v-for="genre in series.show.genres">{{ genre }}</li>
-      </ul>
-
-      <div v-html="series.show.summary"></div>
-
-      <p>{{ series.show.premiered }}</p>
-
-    </article>
 
   </div>
 
   <script src="node_modules/vue/dist/vue.js"></script>
+  <script src="node_modules/vuex/dist/vuex.min.js"></script>
   <script src="node_modules/vue-router/dist/vue-router.min.js"></script>
   <script src="node_modules/axios/dist/axios.min.js"></script>
   <script src="scripts/main.js"></script>
