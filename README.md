@@ -1,5 +1,29 @@
 # vue-tvmaze
-## Instruções:
-* Instale **Yarn** seguindo esse [guia de instalação](https://yarnpkg.com/en/docs/install).
-* Execute `yarn install` para instalar as dependências.
-* Abra o arquivo `index.html`.
+
+## Project setup
+
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+
+```
+yarn build
+```
+
+### Lints and fixes files
+
+```
+yarn lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
