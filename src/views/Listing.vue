@@ -1,7 +1,7 @@
 <template>
   <div class="series-listing">
-    <article class="series-card" v-for="item in series" :key="item.show.id">
-      <router-link class="series-card-link" :to="String(item.show.id)">
+    <article class="series-card" v-for="item in showsData" :key="item.show.id">
+      <router-link class="series-card-link" :to="showUrl(item)">
         <img
           class="series-card-poster"
           :src="
@@ -29,9 +29,32 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import axios from "axios";
 
 export default {
-  computed: mapState(['series'])
-}
+  data() {
+    return {
+      showsData: [],
+      query: "food"
+    };
+  },
+  methods: {
+    async loadData() {
+      try {
+        const response = await axios.get(
+          "http://api.tvmaze.com/search/shows?q=" + this.query
+        );
+        this.showsData = response.data;
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    showUrl(item) {
+      return `/show/${item.show.id}`;
+    }
+  },
+  created() {
+    this.loadData();
+  }
+};
 </script>

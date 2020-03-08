@@ -1,27 +1,27 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Listing from '../views/Listing'
-import Details from '../views/Details'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Listing from "../views/Listing";
+import Details from "../views/Details";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Listing',
+    path: "/",
+    name: "Listing",
     component: Listing
   },
   {
-    path: '/:id',
-    name: 'Details',
+    path: "/show/:id",
+    name: "Details",
     component: Details
   }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;

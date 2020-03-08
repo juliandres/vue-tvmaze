@@ -4,17 +4,6 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'vuex'
-
-export default {
-  computed: mapState(['loading', 'errored']),
-  mounted() {
-    this.$store.dispatch('loadData')
-  }
-}
-</script>
-
 <style>
 * {
   box-sizing: border-box;
@@ -24,7 +13,7 @@ body {
   padding: 20px;
   background-color: #0f0f0f;
   color: #f0f0f0;
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   font-size: 18px;
 }
 
@@ -90,7 +79,7 @@ img {
 }
 
 .series-genres-item:not(:last-child)::after {
-  content: ', ';
+  content: ", ";
 }
 
 .series-details {
