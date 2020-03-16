@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Listing from "../views/Listing";
+import Home from "../views/Home";
 import Details from "../views/Details";
 
 Vue.use(VueRouter);
@@ -8,8 +8,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Listing",
-    component: Listing
+    name: "Home",
+    component: Home
   },
   {
     path: "/show/:id",
