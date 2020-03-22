@@ -1,7 +1,7 @@
 <template>
   <div>
     <Search @submit:query="fetchData" />
-    <div class="series-listing">
+    <div v-if="$route.query.search" class="series-listing">
       <SearchResult
         v-for="item in showsData"
         :item="item"
@@ -59,7 +59,7 @@ export default {
     },
     fetchDataFromQuery() {
       const search = this.$route.query.search;
-      if (search !== "") {
+      if (search && search !== "") {
         this.fetchData(search);
       }
     }
