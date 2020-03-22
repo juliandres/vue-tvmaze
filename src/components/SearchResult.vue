@@ -11,7 +11,9 @@
             class="series-genres-item"
             v-for="(genre, index) in item.show.genres"
             :key="index"
-          >{{ genre }}</li>
+          >
+            {{ genre }}
+          </li>
         </ul>
       </header>
     </router-link>

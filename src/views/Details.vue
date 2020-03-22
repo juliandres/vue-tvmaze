@@ -9,20 +9,25 @@
     <div class="series-details-body">
       <h2 class="series-details-title">{{ showData.name }}</h2>
 
-      <dl v-if="showData.genres && showData.genres.length" class="series-genres">
+      <dl
+        v-if="showData.genres && showData.genres.length"
+        class="series-genres"
+      >
         <dt class="series-genres-label">Genres:</dt>
         <dd
           class="series-genres-item"
           v-for="(genre, index) in showData.genres"
           :key="index"
-        >{{ genre }}</dd>
+        >
+          {{ genre }}
+        </dd>
       </dl>
 
       <div v-html="showData.summary"></div>
 
       <p>Premiered on: {{ showData.premiered }}</p>
 
-      <router-link to="/">Go back</router-link>
+      <button @click="$router.go(-1)">Go back</button>
     </div>
   </article>
 </template>

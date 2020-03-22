@@ -1,8 +1,12 @@
 <template>
   <div>
-    <Search @submit:query="loadData" />
-    <div class="series-listing">
-      <SearchResult v-for="item in showsData" :item="item" :key="item.show.id" />
+    <Search @submit:query="fetchData" />
+    <div v-if="$route.query.search" class="series-listing">
+      <SearchResult
+        v-for="item in showsData"
+        :item="item"
+        :key="item.show.id"
+      />
     </div>
   </div>
 </template>
@@ -23,15 +27,40 @@ export default {
       showsData: []
     };
   },
+  created() {
+    this.fetchDataFromQuery();
+  },
+  watch: {
+    $route() {
+      this.fetchDataFromQuery();
+    }
+  },
   methods: {
-    async loadData(query) {
+    async fetchData(showsQuery) {
       try {
         const response = await axios.get(
-          `http://api.tvmaze.com/search/shows?q=${query}`
+          `http://api.tvmaze.com/search/shows?q=${showsQuery}`
         );
+        this.setUrlQuery(showsQuery);
         this.showsData = response.data;
       } catch (err) {
         console.error(err);
+      }
+    },
+    setUrlQuery(searchQuery) {
+      if (this.$route.query.search !== searchQuery) {
+        this.$router.push({
+          name: "Home",
+          query: {
+            search: searchQuery
+          }
+        });
+      }
+    },
+    fetchDataFromQuery() {
+      const search = this.$route.query.search;
+      if (search && search !== "") {
+        this.fetchData(search);
       }
     }
   }
