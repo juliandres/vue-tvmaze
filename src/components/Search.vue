@@ -2,7 +2,12 @@
   <div>
     <form @submit.prevent="emitQuery">
       <label for="search-form__input">Search for your favorite show</label>
-      <input id="search-form__input" type="search" v-model="query" />
+      <input
+        id="search-form__input"
+        type="search"
+        autocomplete="off"
+        v-model="query"
+      />
       <button>Search</button>
     </form>
   </div>
