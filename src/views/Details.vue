@@ -9,6 +9,13 @@
     <div class="series-details-body">
       <h2 class="series-details-title">{{ showData.name }}</h2>
 
+      <button v-if="!isFavorite" type="button" @click="toggleFavorite">
+        Add to favorites
+      </button>
+      <button v-if="isFavorite" type="button" @click="toggleFavorite">
+        Remove from favorites
+      </button>
+
       <dl
         v-if="showData.genres && showData.genres.length"
         class="series-genres"
@@ -35,10 +42,14 @@
 <script>
 import axios from "axios";
 
+const favoriteShows = {};
+
 export default {
+  name: "Details",
   data() {
     return {
-      showData: {}
+      showData: {},
+      isFavorite: !!favoriteShows[this.$route.params.id]
     };
   },
   methods: {
@@ -51,6 +62,14 @@ export default {
       } catch (err) {
         console.error(err);
       }
+    },
+    toggleFavorite() {
+      this.$set(
+        favoriteShows,
+        this.$route.params.id,
+        !favoriteShows[this.$route.params.id]
+      );
+      this.isFavorite = !this.isFavorite;
     }
   },
   created() {
