@@ -91,6 +91,10 @@ img {
   border-radius: 20px;
 }
 
+.is-favorite {
+  box-shadow: 0 0 10px red;
+}
+
 .series-details-poster {
   display: block;
   margin: 0 auto;

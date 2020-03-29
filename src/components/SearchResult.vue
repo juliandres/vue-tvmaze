@@ -1,5 +1,5 @@
 <template>
-  <article class="series-card">
+  <article class="series-card" :class="{ 'is-favorite': isFavorite }">
     <router-link class="series-card-link" :to="showUrl">
       <img class="series-card-poster" :src="showImage" :alt="item.show.name" />
 
@@ -21,11 +21,22 @@
 </template>
 
 <script>
+import { favoriteStorage } from "../store";
+
 export default {
   props: {
     item: {
       type: Object
     }
+  },
+  data() {
+    return {
+      favoriteShows: favoriteStorage.fetch(),
+      isFavorite: null
+    };
+  },
+  created() {
+    this.setIsFavoriteInitialValue();
   },
   computed: {
     showUrl() {
@@ -35,6 +46,11 @@ export default {
       return this.item.show.image
         ? this.item.show.image.medium
         : "images/no-image.png";
+    }
+  },
+  methods: {
+    setIsFavoriteInitialValue() {
+      this.isFavorite = !!this.favoriteShows[this.item.show.id];
     }
   }
 };
