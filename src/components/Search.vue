@@ -17,10 +17,18 @@
 export default {
   data() {
     return {
-      query: ""
+      query: this.getInitialQueryValue()
     };
   },
+  watch: {
+    $route() {
+      this.query = this.getInitialQueryValue()
+    }
+  },
   methods: {
+    getInitialQueryValue() {
+      return this.$route.query.search || "";
+    },
     emitQuery() {
       this.$emit("submit:query", this.query);
     }
